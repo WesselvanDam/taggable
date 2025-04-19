@@ -1,6 +1,6 @@
 name: flutter_taggable
 description: Mention users, insert hashtags, and tag other entities with this lightweight, customizable package. It provides a database-friendly format for easy storing and parsing of tags.
-version: 1.1.0
+version: 1.1.1
 homepage: https://github.com/WesselvanDam/taggable
 repository: https://github.com/WesselvanDam/taggable
 issue_tracker: https://github.com/WesselvanDam/taggable/issues
@@ -8,8 +8,7 @@ issue_tracker: https://github.com/WesselvanDam/taggable/issues
 topics: [tag, mention, hashtag, tagging, user]
 
 environment:
-  sdk: '>=3.4.1 <4.0.0'
-  flutter: ">=1.17.0"
+  sdk: ^3.7.0
 
 dependencies:
   flutter:

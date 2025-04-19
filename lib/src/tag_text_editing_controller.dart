@@ -102,9 +102,10 @@ class TagTextEditingController<T> extends TextEditingController {
         backendToTaggable,
   ) async {
     final StringBuffer tmpText = StringBuffer();
-    int position = 0;
+    int position = 0, count = 0;
 
-    for (final Match match in _getTagMatches(backendText)) {
+    final matches = _getTagMatches(backendText);
+    for (final Match match in matches) {
       final textBeforeMatch = backendText.substring(position, match.start);
       tmpText.write(textBeforeMatch);
       position = match.end;
@@ -132,8 +133,12 @@ class TagTextEditingController<T> extends TextEditingController {
       _tagBackendFormatsToTaggables[tagText] = taggable;
 
       tmpText.write(tagText);
+      count++;
+      if(count == matches.length) {
+        tmpText.write(backendText.substring(match.end, backendText.length));
+      }
     }
-    text = tmpText.toString().trimRight();
+    text = tmpText.toString().trimRight() + (backendText.endsWith(" ") ? " " : "");
   }
 
   /// Parses a tag string (e.g. "@tag") and returns a tag object.
